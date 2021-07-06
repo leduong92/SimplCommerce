@@ -9,19 +9,19 @@
 
 <div class="panel-body">
 
-    <form>
+    <form novalidate name="frmImportCountry" role="form" ng-submit="ImportCountries()">
         <fieldset>
             <div class="form-group">
                 <label>Chọn file Excel</label>
                 <div>
-                    <input type="file" file-upload name="file" required />
-                    <span ng-show="frmAddProduct.file.$invalid" class="has-error">Phải nhập  file</span>
+                    <input id="countries" name="countries" type="file" file-upload  required />
+                    <span ng-show="frmImportCountry.file.$invalid" class="has-error">Phải nhập  file</span>
                 </div>
             </div>
 
             <div class="box-footer">
                 <button ui-sref="countries" class="btn btn-default">Hủy</button>
-                <button type="submit" ng-disabled="frmImportProduct.$invalid" class="btn btn-primary">Lưu</button>
+                <button type="submit" ng-disabled="frmImportCountry.$invalid" class="btn btn-primary">Lưu</button>
             </div><!-- /.box-footer -->
             
         </fieldset>
