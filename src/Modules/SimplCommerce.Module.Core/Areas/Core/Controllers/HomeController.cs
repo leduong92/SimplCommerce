@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+
 using Microsoft.AspNetCore.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
@@ -81,5 +82,6 @@ namespace SimplCommerce.Module.Core.Areas.Core.Controllers
 
             return View("Error");
         }
+
     }
 }
