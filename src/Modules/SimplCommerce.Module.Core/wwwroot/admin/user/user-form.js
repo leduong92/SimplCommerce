@@ -2,9 +2,9 @@
 (function () {
     angular
         .module('simplAdmin.core')
-        .controller('UserFormCtrl', ['$state', '$stateParams', 'userService', 'translateService', UserFormCtrl]);
+        .controller('UserFormCtrl', ['$state', '$stateParams', 'countryService', 'userService', 'translateService', UserFormCtrl]);
 
-    function UserFormCtrl($state, $stateParams, userService, translateService) {
+    function UserFormCtrl($state, $stateParams, countryService, userService, translateService) {
         var vm = this;
         vm.translate = translateService;
         vm.user = { roleIds: [], customerGroupIds: [] };
@@ -14,6 +14,10 @@
         vm.userId = $stateParams.id;
         vm.isEditMode = vm.userId > 0;
 
+        vm.countries = [];
+        vm.tableStateRef = {};
+
+    
         vm.toggleRoles = function toggleRoles(roleId) {
             var index = vm.user.roleIds.indexOf(roleId);
             if (index > -1) {
@@ -57,6 +61,12 @@
                 });
         };
 
+        function getCountries() {
+            userService.getCountries().then(function (result) {
+                vm.countries = result.data;
+            });
+        }
+
         function getVendors() {
             userService.getVendors().then(function (result) {
                 vm.vendors = result.data;
@@ -85,6 +95,7 @@
             getVendors();
             getRoles();
             getCustomerGroups();
+            getCountries();
         }
 
         init();

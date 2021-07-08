@@ -178,5 +178,11 @@
     "id": "SimplCommerce.Module.WishList",
     "isBundledWithHost": true,
     "version": "1.0.0"
+  },
+  {
+    "id": "Test.Module.Region",
+    "name": "Region",
+    "isBundledWithHost": true,
+    "version": "1.0.0"
   }
 ]

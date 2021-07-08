@@ -1,0 +1,14 @@
+[
+  {
+    "outputFileName": "wwwroot/admin/regions.min.js",
+    "inputFiles": [
+      "wwwroot/admin/regions.module.js",
+      "wwwroot/admin/regions/regionListController.js"
+    ],
+    "minify": {
+      "enabled": true,
+      "renameLocals": true
+    },
+    "sourceMap": false
+  }
+]

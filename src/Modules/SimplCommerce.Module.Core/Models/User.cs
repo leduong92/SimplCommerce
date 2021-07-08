@@ -47,10 +47,24 @@ namespace SimplCommerce.Module.Core.Models
 
         public IList<CustomerGroupUser> CustomerGroups { get; set; } = new List<CustomerGroupUser>();
 
+        public IList<UserRegion> Regions { get; set; } = new List<UserRegion>();
+
         [StringLength(450)]
         public string Culture { get; set; }
 
         /// <inheritdoc />
         public string ExtensionData { get; set; }
+
+
+        public string SalesResponsible { get; set; }
+        public string CustomerAccount { get; set; }
+        public string CustomerName { get; set; }
+        public string Region { get; set; }
+
+        public void AddRegion(UserRegion userRegion)
+        {
+            userRegion.User = this;
+            Regions.Add(userRegion);
+        }
     }
 }

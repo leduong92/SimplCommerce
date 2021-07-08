@@ -13,6 +13,7 @@
 <table class="table table-striped" st-pipe="vm.getCountries" st-table="vm.users">
     <thead>
         <tr>
+            <th st-sort="Id" class="sortable">{{::vm.translate.get('Code')}}</th>
             <th st-sort="Name" class="sortable">{{::vm.translate.get('Name')}}</th>
             <th st-sort="IsShippingEnabled" class="sortable" st-sort-default="reverse">{{::vm.translate.get('Is Shipping Enabled')}}</th>
             <th st-sort="IsBillingEnabled" class="sortable">{{::vm.translate.get('Is Billing Enabled')}}</th>
@@ -21,20 +22,21 @@
             <th st-sort="IsBillingEnabled" class="sortable">{{::vm.translate.get('Display District')}}</th>
             <th class="sortable">&nbsp;</th>
         </tr>
-        <tr>
+        <!--<tr>
             <th>
                 <div class="form-group">
                     <input class="form-control" st-search="Name" />
                 </div>
             </th>
             <th></th>
-        </tr>
+        </tr>-->
         <tr>
             <th ng-show="!vm.isLoading" colspan="7">{{vm.tableStateRef.pagination.totalItemCount | number:0}} {{::vm.translate.get('records found')}}</th>
         </tr>
     </thead>
     <tbody ng-show="!vm.isLoading">
         <tr ng-repeat="country in vm.countries">
+            <td>{{country.id}}</td>
             <td>{{country.name}}</td>
             <td>
                 <input type="checkbox" ng-model="country.isShippingEnabled" ng-click="vm.update(country)">

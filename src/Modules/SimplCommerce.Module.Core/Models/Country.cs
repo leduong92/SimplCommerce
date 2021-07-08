@@ -30,5 +30,7 @@ namespace SimplCommerce.Module.Core.Models
 
         public IList<StateOrProvince> StatesOrProvinces { get; set; } = new List<StateOrProvince>();
 
+        public IList<UserRegion> Regions { get; set; } = new List<UserRegion>();
+
     }
 }

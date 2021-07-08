@@ -14,7 +14,8 @@
             deleteUser: deleteUser,
             getRoles: getRoles,
             getVendors: getVendors,
-            getCustomerGroups: getCustomerGroups
+            getCustomerGroups: getCustomerGroups,
+            getCountries: getCountries
         };
         return service;
 
@@ -48,6 +49,10 @@
 
         function getVendors() {
             return $http.get('api/vendors');
+        }
+
+        function getCountries() {
+            return $http.get('api/countries');
         }
 
         function getCustomerGroups() {

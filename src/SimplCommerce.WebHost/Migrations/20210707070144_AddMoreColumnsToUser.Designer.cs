@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using SimplCommerce.Module.Core.Data;
@@ -9,9 +10,10 @@ using SimplCommerce.Module.Core.Data;
 namespace SimplCommerce.WebHost.Migrations
 {
     [DbContext(typeof(SimplDbContext))]
-    partial class SimplDbContextModelSnapshot : ModelSnapshot
+    [Migration("20210707070144_AddMoreColumnsToUser")]
+    partial class AddMoreColumnsToUser
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -1821,31 +1823,6 @@ namespace SimplCommerce.WebHost.Migrations
                     b.HasIndex("UserId");
 
                     b.ToTable("Core_UserAddress");
-                });
-
-            modelBuilder.Entity("SimplCommerce.Module.Core.Models.UserRegion", b =>
-                {
-                    b.Property<long>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("bigint")
-                        .UseIdentityByDefaultColumn();
-
-                    b.Property<string>("CountryId")
-                        .HasColumnType("text");
-
-                    b.Property<DateTimeOffset>("CreateOn")
-                        .HasColumnType("timestamp with time zone");
-
-                    b.Property<long>("UserId")
-                        .HasColumnType("bigint");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("CountryId");
-
-                    b.HasIndex("UserId");
-
-                    b.ToTable("Core_UserRegion");
                 });
 
             modelBuilder.Entity("SimplCommerce.Module.Core.Models.UserRole", b =>
@@ -3910,24 +3887,6 @@ namespace SimplCommerce.WebHost.Migrations
                     b.Navigation("User");
                 });
 
-            modelBuilder.Entity("SimplCommerce.Module.Core.Models.UserRegion", b =>
-                {
-                    b.HasOne("SimplCommerce.Module.Core.Models.Country", "Country")
-                        .WithMany("Regions")
-                        .HasForeignKey("CountryId")
-                        .OnDelete(DeleteBehavior.Restrict);
-
-                    b.HasOne("SimplCommerce.Module.Core.Models.User", "User")
-                        .WithMany("Regions")
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
-
-                    b.Navigation("Country");
-
-                    b.Navigation("User");
-                });
-
             modelBuilder.Entity("SimplCommerce.Module.Core.Models.UserRole", b =>
                 {
                     b.HasOne("SimplCommerce.Module.Core.Models.Role", "Role")
@@ -4588,8 +4547,6 @@ namespace SimplCommerce.WebHost.Migrations
 
             modelBuilder.Entity("SimplCommerce.Module.Core.Models.Country", b =>
                 {
-                    b.Navigation("Regions");
-
                     b.Navigation("StatesOrProvinces");
                 });
 
@@ -4606,8 +4563,6 @@ namespace SimplCommerce.WebHost.Migrations
             modelBuilder.Entity("SimplCommerce.Module.Core.Models.User", b =>
                 {
                     b.Navigation("CustomerGroups");
-
-                    b.Navigation("Regions");
 
                     b.Navigation("Roles");
 

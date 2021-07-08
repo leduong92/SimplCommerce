@@ -62,6 +62,37 @@
                     </div>
                 </div>
             </div>
+
+            <div class="form-group">
+                <label class="col-sm-2 control-label">{{::vm.translate.get('Sales Responsible')}}</label>
+                <div class="col-sm-10">
+                    <input name="description" ng-model="vm.user.salesResopnsible" class="form-control" />
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-sm-2 control-label">{{::vm.translate.get('Customer Account')}}</label>
+                <div class="col-sm-10">
+                    <input name="description" ng-model="vm.user.customerAccount" class="form-control" />
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-sm-2 control-label">{{::vm.translate.get('Customer Name')}}</label>
+                <div class="col-sm-10">
+                    <input name="description" ng-model="vm.user.customerName" class="form-control" />
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-sm-2 control-label">{{::vm.translate.get('Region')}}</label>
+                <div class="col-sm-10">
+                    <select class="form-control" ng-model="vm.user.region" ng-options="option.id as option.name for option in vm.countries" >
+                        <option value="">{{::vm.translate.get('Not Region')}}</option>
+                    </select>
+                </div>
+            </div>
+
             <div class="form-group">
                 <div class="col-sm-offset-2 col-sm-10">
                     <button class="btn btn-primary" ng-click="vm.save()"><span class="glyphicon glyphicon-ok"></span> {{::vm.translate.get('Save')}}</button>

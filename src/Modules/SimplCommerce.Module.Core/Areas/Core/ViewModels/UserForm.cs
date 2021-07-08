@@ -22,5 +22,11 @@ namespace SimplCommerce.Module.Core.Areas.Core.ViewModels
 
         public IList<long> RoleIds { get; set; } = new List<long>();
         public IList<long> CustomerGroupIds { get; set; } = new List<long>();
+
+        public string SalesResponsible { get; set; }
+        public string CustomerAccount { get; set; }
+        public string CustomerName { get; set; }
+        public string Region { get; set; }
+
     }
 }

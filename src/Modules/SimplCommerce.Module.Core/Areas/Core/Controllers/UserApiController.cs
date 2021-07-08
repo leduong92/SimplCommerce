@@ -114,7 +114,11 @@ namespace SimplCommerce.Module.Core.Areas.Core.Controllers
                     user.FullName,
                     user.CreatedOn,
                     Roles = user.Roles.Select(x => x.Role.Name),
-                    CustomerGroups = user.CustomerGroups.Select(x => x.CustomerGroup.Name)
+                    CustomerGroups = user.CustomerGroups.Select(x => x.CustomerGroup.Name),
+                    user.SalesResponsible,
+                    user.CustomerAccount,
+                    user.CustomerName,
+                    user.Region
                 });
 
             return Json(users);
@@ -158,7 +162,11 @@ namespace SimplCommerce.Module.Core.Areas.Core.Controllers
                     Email = model.Email,
                     FullName = model.FullName,
                     PhoneNumber = model.PhoneNumber,
-                    VendorId = model.VendorId
+                    VendorId = model.VendorId,
+                    Region = model.Region,
+                    SalesResponsible = model.SalesResponsible,
+                    CustomerAccount = model.CustomerAccount,
+                    CustomerName = model.CustomerName
                 };
 
                 foreach (var roleId in model.RoleIds)

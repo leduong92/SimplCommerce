@@ -17,6 +17,13 @@
             <th>{{::vm.translate.get('Roles')}}</th>
             <th>{{::vm.translate.get('Customer Groups')}}</th>
             <th st-sort="CreatedOn" class="sortable">{{::vm.translate.get('Created On')}}</th>
+
+            <th>{{::vm.translate.get('Sales Responsible')}}</th>
+            <th>{{::vm.translate.get('Customer Account')}}</th>
+            <th>{{::vm.translate.get('Customer Name')}}</th>
+            <th>{{::vm.translate.get('Region')}}</th>
+
+
             <th>{{::vm.translate.get('Actions')}}</th>
         </tr>
         <tr>
@@ -60,6 +67,12 @@
             <td>{{user.roles.join(', ')}}</td>
             <td>{{user.customerGroups.join(', ')}}</td>
             <td>{{user.createdOn | date:'medium' }}</td>
+
+            <td>{{user.salesResopnsible}}</td>
+            <td>{{user.customerAccount}}</td>
+            <td>{{user.customerName}}</td>
+            <td>{{user.region}}</td>
+
             <td>
                 <a ui-sref="user-edit({id: user.id})" title="Edit" class="btn btn-primary btn-xs"> <span class="glyphicon glyphicon-pencil"></span></a>
                 <button ng-click="vm.deleteUser(user)" class="btn btn-danger btn-xs delete"> <span class="glyphicon glyphicon-remove"></span></button>
