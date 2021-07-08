@@ -13,9 +13,10 @@
 
 @{ Layout = null;
 
-                var assetBundling = Config.GetValue<bool>("Global.AssetBundling");
-                var defaultCulture = Config.GetValue<string>("Global.DefaultCultureAdminUI") ?? Config.GetValue<string>("Global.DefaultCultureUI");
-                var cultures = CultureRepository.Query().Where(x => x.Id != defaultCulture).Select(x => $"\"{x.Id}\"").ToArray(); }
+    var assetBundling = Config.GetValue<bool>("Global.AssetBundling");
+    var defaultCulture = Config.GetValue<string>("Global.DefaultCultureAdminUI") ?? Config.GetValue<string>("Global.DefaultCultureUI");
+    var cultures = CultureRepository.Query().Where(x => x.Id != defaultCulture).Select(x => $"\"{x.Id}\"").ToArray(); 
+}
 
 <!DOCTYPE html>
 <html ng-app="simplAdmin">
@@ -95,7 +96,6 @@
 
     @foreach (var module in GlobalConfiguration.Modules)
     {
-
         var resourceStream = module.Assembly.GetManifestResourceStream($"{module.Id}.bundleconfig.json");
         if (resourceStream == null)
         {
@@ -108,24 +108,24 @@
             dynamic bundleConfigs = JsonConvert.DeserializeObject(content);
             foreach (var configItems in bundleConfigs)
             {
-                    string outputFileName = configItems.outputFileName;
-                    if (outputFileName.Contains("admin") && outputFileName.EndsWith(".js"))
+                string outputFileName = configItems.outputFileName;
+                if (outputFileName.Contains("admin") && outputFileName.EndsWith(".js"))
+                {
+                    if (assetBundling)
                     {
-                         if (assetBundling)
-                         {
-                              <script simpl-append-version="true" src="~/_content/@module.Id/@outputFileName.Replace("wwwroot/", "")"></script> 
-                         }
-                         else
-                         {
-                              foreach (string inputFile in configItems.inputFiles)
-                              {
-                                   <script simpl-append-version="true" src="~/_content/@module.Id/@inputFile.Replace("wwwroot/", "")"></script>
-                              }
-                         }
+                        <script simpl-append-version="true" src="~/_content/@module.Id/@outputFileName.Replace("wwwroot/", "")"></script> 
                     }
-               }
-          }
-     }
+                    else
+                    {
+                        foreach (string inputFile in configItems.inputFiles)
+                        {
+                            <script simpl-append-version="true" src="~/_content/@module.Id/@inputFile.Replace("wwwroot/", "")"></script>
+                        }
+                    }
+                }
+            }
+        }
+    }
 </head>
 <body>
     <div class="navbar navbar-inverse">
