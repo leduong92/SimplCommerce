@@ -113,19 +113,18 @@
                 {
                     if (assetBundling)
                     {
-                        <script simpl-append-version="true" src="~/_content/@module.Id/@outputFileName.Replace("wwwroot/", "")"></script> 
-                    }
-                    else
-                    {
-                        foreach (string inputFile in configItems.inputFiles)
-                        {
-                            <script simpl-append-version="true" src="~/_content/@module.Id/@inputFile.Replace("wwwroot/", "")"></script>
+<script simpl-append-version="true" src="~/_content/@module.Id/@outputFileName.Replace("wwwroot/", "")"></script>
+ }
+                            else
+                            {
+                                foreach (string inputFile in configItems.inputFiles)
+                                {
+<script simpl-append-version="true" src="~/_content/@module.Id/@inputFile.Replace("wwwroot/", "")"></script>}
+                            }
                         }
                     }
                 }
             }
-        }
-    }
 </head>
 <body>
     <div class="navbar navbar-inverse">

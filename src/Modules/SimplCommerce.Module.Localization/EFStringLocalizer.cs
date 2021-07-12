@@ -5,6 +5,7 @@ using System.Linq;
 using Microsoft.Extensions.Caching.Memory;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Localization;
+using SimplCommerce.Infrastructure;
 using SimplCommerce.Infrastructure.Data;
 using SimplCommerce.Infrastructure.Localization;
 
@@ -71,7 +72,7 @@ namespace SimplCommerce.Module.Localization
 
         private void AutoRegisterNewString(string name, string culture)
         {
-            if (culture != "en-US") //GlobalConfiguration.DefaultCulture
+            if (culture != GlobalConfiguration.DefaultCulture) //GlobalConfiguration.DefaultCulture
             {
                 using (var scope = _serviceProvider.CreateScope())
                 {

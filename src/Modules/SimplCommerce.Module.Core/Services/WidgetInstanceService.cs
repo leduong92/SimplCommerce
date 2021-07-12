@@ -17,7 +17,7 @@ namespace SimplCommerce.Module.Core.Services
         public IQueryable<WidgetInstance> GetPublished()
         {
             var now = DateTimeOffset.Now;
-            return _widgetInstanceRepository.Query().Where(x =>
+            return  _widgetInstanceRepository.Query().Where(x =>
                 x.PublishStart.HasValue && x.PublishStart < now
                 && (!x.PublishEnd.HasValue || x.PublishEnd > now));
         }

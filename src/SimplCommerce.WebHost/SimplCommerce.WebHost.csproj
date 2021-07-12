@@ -63,6 +63,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="Bootswatch" Version="4.0.0" />
     <PackageReference Include="EPPlus" Version="5.7.0" />
     <PackageReference Include="IdentityServer4.AspNetIdentity" Version="3.0.1" />
     <PackageReference Include="BuildBundlerMinifier" Version="3.0.415" />
@@ -90,6 +91,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Themes\TestTheme\" />
     <Folder Include="wwwroot\Upload\" />
   </ItemGroup>
 </Project>

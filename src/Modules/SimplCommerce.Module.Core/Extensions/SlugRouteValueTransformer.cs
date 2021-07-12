@@ -37,7 +37,7 @@ namespace SimplCommerce.Module.Core.Extensions
                 return null;
             }
 
-            return new RouteValueDictionary
+                return new RouteValueDictionary
             {
                 { "area", entity.EntityType.AreaName },
                 { "controller", entity.EntityType.RoutingController },
